@@ -55,7 +55,7 @@ Sara, a consistent contributor with little recognition and zero financial compen
 
 ## 📥 Clone & Install Dependencies:
 ```bash
-git clone https://github.com/<your-username>/AlgoDevs.git
+git clone https://github.com/Dhruva-007/AlgoDevs.git
 cd AlgoDevs
 npm install
 ```
