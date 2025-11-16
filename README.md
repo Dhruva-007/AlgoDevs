@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🎯 Overview:
+[`AlgoDevs`](https://algo-devs.vercel.app/) is a decentralized, transparent, and trustless task bounty board that connects creators with global contributors — powered by Algorand smart contracts.
 
-## Getting Started
 
-First, run the development server:
 
+## 🚨 Problems Today:
+
+--> 🔍 Trust issues between creators & contributors.
+
+--> 💸 Payment delays and disputes.
+
+--> 🏢 Centralized platforms controlling decisions and fees.
+
+
+
+## ✅ Our Solution:
+AlgoDevs introduces a smart-contract driven workflow that ensures:
+
+✔ Trustless task verification.
+
+✔ Automated bounty release.
+
+✔ Transparent contribution tracking.
+
+✔ Zero middlemen.
+
+
+
+## 🌍 How It Works:
+1. Creator posts a task
+2. Contributor submits application or proof
+3. Creator verifies
+4. Smart Contract automatically releases the bounty
+
+
+
+## 📖 Case Study:
+Sara, a consistent contributor with little recognition and zero financial compensation for her valuable open-source work, submits proof of work on AlgoDevs → Gets verified → Smart contract releases bounty instantly → No delays, no disputes.
+
+
+
+## ⚙️ Setup & Installation:
+🔧 Prerequisites:
+
+-> Node.js (14+ recommended)
+
+-> npm / yarn
+
+-> Algorand testnet wallet
+
+-> Optional: Algorand Sandbox for local SC testing
+
+
+
+
+## 📥 Clone & Install Dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/<your-username>/AlgoDevs.git
+cd AlgoDevs
+npm install
 ```
 
+## 🚀 Start Development Server:
+```bash
+npm run dev
+```
+
+## 🏗 Build for Production:
+```bash
+npm run build
+npm run start
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## 🧩 Core Components:
+|        Component          |                 Description                   |
+| ------------------------- | --------------------------------------------- |
+| `User Profiles`           | Wallet-linked profiles, achievements, history |
+| `Real-Time Projects`      | Live task board powered by responsive APIs    |
+| `Proof Submission`        | Instant upload + verification flow            |
+| `Peer Reviews`            | Community-driven quality checks               |
+| `Creator Feedback`        | Task creator approves/rejects                 |
+| `Achievement System`      | Badges, ranks, contributor stats              |
+| `Leaderboard`             | Top contributors by earnings, speed, trust    |
+| `Non-Tech Task Modules`   | Creative, educational, event, micro tasks     |
+| `Wallet & Balance Sync`   | Check real-time ALGO balance                  |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Live Deployment:
+The platform is live at:
+👉 [AlgoDevs](https://algo-devs.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Explore tasks, connect your Algorand wallet, and experience the trustless bounty workflow.
+
+
+
+## 🧡 Contribution & Feedback:
+Contributions are welcome! Please open issues, submit pull requests, or join the discussion.
+Whether you’re a creator, contributor, or just an Algorand enthusiast — your feedback helps make AlgoDevs better.
+Let’s build a truly decentralised, global task-bounty marketplace together.
+
+
+
+## ⭐ Thank You:
+Thanks for checking out AlgoDevs. We believe in empowering creators and contributors with a platform that’s open, transparent, and fair. 🚀
+
+
+
