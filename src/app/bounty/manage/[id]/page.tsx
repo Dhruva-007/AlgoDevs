@@ -37,7 +37,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { AlgorandClient } from "@algorandfoundation/algokit-utils"
+import { AlgorandClient, microAlgos } from "@algorandfoundation/algokit-utils"
 import { BountyClient } from "@/contracts/BountyClient"
 
 // Update the BountyConfig interface to include bountyDescription
@@ -396,7 +396,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
 
     setSendingReward(true)
     try {
-      // Initialize Algorand client
+      // 1. Initialise Algorand client on TESTNET
       const algorand = AlgorandClient.fromConfig({
         algodConfig: {
           server: "https://testnet-api.algonode.cloud",
@@ -410,35 +410,51 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
         },
       })
 
-      // Get the bounty client for the app
+      // 2. Typed bounty client for this bounty app
       const bountyClient = algorand.client.getTypedAppClientById(BountyClient, {
         appId: BigInt(Number(bounty.bountyAppId)),
         defaultSender: activeAccount.address,
         defaultSigner: transactionSigner,
       })
 
-      toast.info("Sending reward transaction to the blockchain...", { duration: Infinity })
+      toast.info("Sending reward transaction to the blockchain...", { duration: 5000 })
 
-      // In a real implementation, you would call the smart contract to send the reward
-      // For demonstration, we'll simulate the transaction with a delay
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      // 3. Call the ABI method on-chain
+      // NOTE: we call it with NO params – default { args: [] } is used
+      const result = await bountyClient.send.sendReward({
+        args: [],
+        extraFee: microAlgos(3000),  // outer fee = 3000 µALGO to cover inner tx
+      })
 
-      // Update the submission status
+
+
+      console.log("sendReward result:", result)
+
+      // 4. Mark this submission as paid in UI
       setSubmissions((prev) =>
         prev.map((sub) =>
-          sub.id === submission.id ? { ...sub, status: "paid", feedback: "Reward sent successfully" } : sub,
+          sub.id === submission.id
+            ? { ...sub, status: "paid", feedback: "Reward sent successfully" }
+            : sub,
         ),
       )
 
       toast.success("Reward sent successfully")
       setSelectedSubmission(null)
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error sending reward:", err)
-      toast.error("Failed to send reward")
+      toast.error(
+        `Failed to send reward: ${
+          err?.response?.body?.message ||
+          err?.message ||
+          "Unknown error"
+        }`,
+      )
     } finally {
       setSendingReward(false)
     }
   }
+
 
   // Add a new function to handle setting a winner
   const handleSetWinner = async (submission: Submission) => {
@@ -786,7 +802,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                     size="sm"
                     className="bg-indigo-600 hover:bg-indigo-700 text-white"
                     onClick={() => handleSendReward(submission)}
-                    disabled={processingAction === submission.id}
+                    disabled={processingAction === submission.id || sendingReward}
                   >
                     <Send className="h-4 w-4 mr-1" /> Send Reward
                   </Button>
